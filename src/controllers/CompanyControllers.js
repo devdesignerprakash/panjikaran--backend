@@ -69,12 +69,15 @@ class CompanyControllers{
     }
     async updateCompany(req,res){
         const {id}= req.params
+        console.log(req.body)
+        console.log(req.params)
         try {
             const existCompany= await Company.findOne({_id:id})
             if(existCompany){
-               await CompanyServices.updateCompany(id,req.body)
+               const updatedCompany = await CompanyServices.updateCompany(id,req.body)
                 res.status(200).json({
                    msg:"company updated successfully",
+                   updatedCompany
                 })
             }
             else{

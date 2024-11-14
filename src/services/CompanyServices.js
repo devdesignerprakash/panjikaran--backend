@@ -12,8 +12,7 @@ class CompanyServices{
     return await Company.find()
    }
    async updateCompany(id,companyData){
-    return await Company.findOneAndUpdate(id,companyData)
-
+    return await Company.findOneAndUpdate({_id:id}, companyData,{new:true})
    }
    async deleteCompany(id){
     return await Company.findOneAndDelete(id)
